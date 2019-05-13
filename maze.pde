@@ -8,16 +8,15 @@ Node[][] nodes;
    this.nodes = new Node[this.size][this.size];
   }
   
-  void initMap(int obstacleProbabilty){
+  void initMap(float obstacleProbabilty){
     for(int i = 0; i < this.size; i++){
-      for(int j = 0; j < this.size; j++ ){    
+      for(int j = 0; j < this.size; j++ ){
         this.nodes[i][j] = new Node(i,j);
-        if( round(random(obstacleProbabilty)) == 1 ){           
+        if( Math.round(random(obstacleProbabilty)) == 1 ){           
           this.nodes[i][j].path = true;
           this.nodes[i][j].setRGB(255,0,0);
         }
       }
-      println();
     }
   }
  public Node[][] getNodes(){
@@ -28,15 +27,9 @@ Node[][] nodes;
   for(int i = 0; i < this.size; i++){
     for(int j = 0; j < this.size; j++ ){  
       fill(this.nodes[i][j].R,this.nodes[i][j].G,this.nodes[i][j].B);
-      rect(j*53,i*53,53,53);
+      rect(j*20,i*20,20,20);
     }
   }
-}
-  void setSrcDest(int sX, int sY, int dX, int dY){
-    this.nodes[sX][sY].setRGB(0,0,0);    
-    this.nodes[sX][sY].setPath();
-    this.nodes[dX][dY].setRGB(0,0,0);    
-    this.nodes[dX][dY].setPath();
 }
 public void setPath(int x, int y , int r, int g, int b){
   this.nodes[x][y].setRGB(r,g,b);
